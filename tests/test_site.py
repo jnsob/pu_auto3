@@ -1,10 +1,11 @@
 from selenium.webdriver.common.by import By
+from pages.home_page import HomePage
+from pages.product import ProductPage
 
 
-def test_open_s6(driver):
-    driver.get("https://www.demoblaze.com/")
-
-    element = driver.find_element(By.XPATH, "//a[text()='Samsung galaxy s6']")
-    element.click()
-    element_2 = driver.find_element(By.XPATH, "//h2[@class='name']")
-    assert element_2.text == "Samsung galaxy s6"
+def test_open_s6(browser):
+    home_page = HomePage(browser)
+    home_page.open()
+    home_page.click()
+    product_page = ProductPage(browser)
+    product_page.check_title_is('Samsung galaxy s6')
