@@ -17,9 +17,9 @@ jobs:
     name: Tests
     steps: 
       - name: Copy source code
-      - uses: actions/checkout@4
+        uses: actions/checkout@4
       - name: Set up python environment
-      - uses: actions/setup-python@v5
+        uses: actions/setup-python@v5
         with: 
           python-version: "3.12.4"
       - name: install dependencies
