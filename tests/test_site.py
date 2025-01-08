@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from pages.home_page import HomePage
 from pages.product import ProductPage
-
+import allure
 
 def test_open_s6(browser):
     home_page = HomePage(browser)
