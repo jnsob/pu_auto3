@@ -26,5 +26,14 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run tests
         run: pytest --alluredir=allure-results
-
-      
+  genetare-report:
+    runs-on: ubuntu-latest
+    needs: run-tests
+    name: Generate report
+    steps:
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'microsoft'
+          java-version: '17'
+      - run: sudo wget https://github.com/allure-framework/allure2/releases/download/2.23.2/allure-2.23.2.tgz && sudo tar -zxvf allure-2.23.2.tgz -C /opt/ && sudo ln -s /opt/allure-2.23.2/bin/allure /usr/bin/allure
+      - run: allure generate -c allure-results -o _site
